@@ -1,0 +1,29 @@
+﻿@{
+  Layout = "";
+}
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Comment.CommentMainListViewModel
+
+@if (Model.Comments.Count() != 0)
+{
+<div class="widget">
+    <h2 class="widget-title">@Resources.PersianResources.RecentComments</h2>
+    <ul id="recentcomments">
+        @foreach (var item in Model.Comments)
+        {
+        <li>
+            <div>
+                <img src="/File?folder=Avatar&amp;file=@(item.CreatorId).jpg" alt="" class="profileImage">
+                @item.CreatorName:
+            </div>
+            <div class="recentComments">
+                <a href="/Post/@item.PostId/@item.PostTitle.ToUrl()">
+                    @item.Body
+                </a>
+            </div>
+        </li>
+        }
+
+    </ul>
+</div>
+}

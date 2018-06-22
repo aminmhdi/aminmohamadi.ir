@@ -1,0 +1,237 @@
+﻿@using Microsoft.AspNet.Identity
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Post.PostDetailViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+    ViewBag.Title = Model.Title;
+}
+
+<article id="post-@Model.Id" class="post-@Model.Id post">
+    <div class="clearfix post-content media">
+        <h2 class="entry-title">
+            <a href="/Post/@Model.Id/@Model.Title.ToUrl()" rel="bookmark">@Model.Title</a>
+        </h2>
+        <div class="clearfix entry-meta">
+            <i class="fa fa-calendar"></i>
+            <span class="posted-on">@Model.CreatedOn.ToPersianString("dddd yyyy/M/d").GetPersianNumber()</span>
+            &nbsp;
+            <i class="fa fa-file-text text-darkorange"></i>
+            <span>
+                <a href="/Category/@Model.CategoryId" rel="category tag">@Model.Category.Title</a>
+            </span>
+            @*<i class="fa fa-comment" style="color: darkblue"></i>
+                <span>@Model.Comments.Count</span>*@
+            @*/
+                <i class="fa fa-plus-circle" style="color: green"></i>
+                <span id="ContentPlaceHolder1_GridView1_Label_Likes_0">۳۸</span>
+                /
+                <i class="fa fa-minus-circle" style="color: red"></i>
+                <span id="ContentPlaceHolder1_GridView1_Label_Unlikes_0">۰</span>*@
+
+            @*<ul class="list-inline">
+
+                    <li>
+                        <span class="author vcard">
+                            نویسنده <a class="url fn n" href="http://demo.shapedtheme.com/shaped-blog/author/shapedtheme/">@item.Creator.NameForShow</a>
+                        </span>
+                    </li>
+                    <li>
+                        در
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>*@
+        </div>
+        <div>
+            @Html.Raw(Model.Body)
+        </div>
+        <div class="m-t-30">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right text-left ltr">
+                        <ul class="share-buttons">
+                            <li>
+                                <a href="https://t.me/share/url?url=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())" target="_blank">
+                                    @*<img alt="" src="/Content/Images/ShareMedia/Telegram.png" />*@
+                                    <i class="fa fa-2x fa-telegram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())&t=@(Model.Title)" target="_blank">
+                                    @*<img alt="" src="/Content/Images/ShareMedia/Facebook.png" />*@
+                                    <i class="fa fa-2x fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())&t=@(Model.Title)&text=@(Model.Title)" target="_blank">
+                                    @*<img alt="" src="/Content/Images/ShareMedia/Twitter.png" />*@
+                                    <i class="fa fa-2x fa-twitter-square"></i>
+                                </a>
+                            </li>
+                            @*<li>
+                                    <a href="https://plus.google.com/share?url=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())" target="_blank">
+                                        <img alt="" src="/Content/Images/ShareMedia/GooglePlus.png"/>
+                                    </a>
+                                </li>*@
+                            @*<li>
+                                    <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())&description=@(Model.Title)" target="_blank">
+                                        <img alt="" src="/Content/Images/ShareMedia/Pinterest.png"/>
+                                    </a>
+                                </li>*@
+                            <li>
+                                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Faminmohamadi.ir/Post/@(Model.Id)/@(Model.Title.ToUrl())&title=@(Model.Title)&summary=&source=http%3A%2F%2Faminmohamadi.ir" target="_blank">
+                                    @*<img alt="" src="/Content/Images/ShareMedia/LinkedIn.png" />*@
+                                    <i class="fa fa-2x fa-linkedin-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pull-left">
+                        @{
+                            Html.RenderAction("Index", "PostReact", new { postReactDetailViewModels = Model.PostReacts, postId = Model.Id });
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr />
+        @{
+            if (!string.IsNullOrEmpty(Model.Keyword))
+            {
+                <div class="keywords">
+                    <strong>
+                        <i class="fa fa-tags darkred-text"></i>
+                        @Resources.PersianResources.Keywords:
+                    </strong>
+
+                    @foreach (var item in Model.Keyword.Split(','))
+                    {
+                        var trimWord = item.Trim();
+                        <a href="/Search/@trimWord" title="@trimWord">@trimWord</a>
+                    }
+
+                </div>
+            }
+        }
+    </div>
+</article>
+
+@*<div class="post-nav-area">
+
+        <nav class="next-previous-post clearfix media" role="navigation">
+            <div class="row">
+                <!-- Previous Post -->
+                <div class="previous-post col-sm-6 pull-left">
+                    <div class="nav-previous"><i class="fa fa-angle-left"></i> <a href="http://demo.shapedtheme.com/shaped-blog/sed-ut-perspiciatis-unde-omnis-iste-natus/" rel="prev">Sed ut perspiciatis unde omnis iste natus</a></div>
+                </div>
+
+                <!-- Next Post -->
+                <div class="next-post col-sm-6 pull-right text-right">
+                    <div class="nav-next"><a href="http://demo.shapedtheme.com/shaped-blog/morning-breakfast-with-milk-and-wheat/" rel="next">Morning Breakfast with Milk and Wheat</a> <i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+        </nav><!-- .navigation -->
+
+    </div>*@
+
+
+<div id="comments">
+    <h3 class="comments-title">
+        @Resources.PersianResources.Comments @(Model.Comments.Count != 0 ? "(" + Model.Comments.Count.ToString().GetPersianNumber() + ")" : "" )
+    </h3>
+
+    @{
+        if (Model.Comments.Count != 0)
+        {
+            <ul class="comment-list">
+                @foreach (var comment in Model.Comments)
+                {
+                    <li class="comment" id="li-comment-@comment.Id">
+                        <div id="comment-@comment.Id" class="comment-body media">
+                            <div class="comment-avartar pull-left">
+                                <img alt="" src="/File?folder=avatar&file=@(comment.CreatorId).jpg" srcset="/File?folder=avatar&file=@(comment.CreatorId).jpg 2x" height="75" width="75">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="comment-author">
+                                    <a href="/Profile/@comment.Creator.UserName" rel="external nofollow" class="url">@comment.Creator.NameForShow</a>
+                                </h3>
+                                <span class="comment-date">@comment.CreatedOn.ToPersianString("dddd yyyy/M/d").GetPersianNumber()</span>
+                                <div class="comment-content">
+                                    <p>
+                                        @comment.Body
+                                    </p>
+                                </div>
+
+                                @*<span class="comment-reply">
+                                        <a rel="nofollow" class="comment-reply-login" href="http://demo.shapedtheme.com/shaped-blog/wp-login.php?redirect_to=http%3A%2F%2Fdemo.shapedtheme.com%2Fshaped-blog%2Fbut-i-must-explain-to-you-how-all-this-mistaken%2F">Log in to Reply</a>
+                                    </span>*@
+                            </div>
+                        </div>
+                        @*<ul class="children">
+                                <li class="comment byuser comment-author-shapedtheme bypostauthor odd alt depth-2" id="li-comment-3">
+                                    <div id="comment-3" class="comment-body media">
+                                        <div class="comment-avartar pull-left">
+                                            <img alt="" src="http://0.gravatar.com/avatar/699c5027622976c7e75dd5afbf57739a?s=75&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/699c5027622976c7e75dd5afbf57739a?s=150&amp;d=mm&amp;r=g 2x" class="avatar avatar-75 photo" height="75" width="75">
+                                        </div>
+                                        <div class="comment-context media-body">
+                                            <div class="comment-head">
+                                                <h3 class="comment-author">shapedtheme</h3>
+                                                <span class="comment-date">October 8, 2015</span>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>But I must explain to you how all this mistaken ideashear</p>
+                                            </div>
+                                            <span class="comment-reply">
+                                                <a rel="nofollow" class="comment-reply-login" href="http://demo.shapedtheme.com/shaped-blog/wp-login.php?redirect_to=http%3A%2F%2Fdemo.shapedtheme.com%2Fshaped-blog%2Fbut-i-must-explain-to-you-how-all-this-mistaken%2F">Log in to Reply</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li><!-- #comment-## -->
+                            </ul><!-- .children -->*@
+                    </li>
+                }
+            </ul>
+        }
+    }
+
+    @if (!Request.IsAuthenticated)
+    {
+        <div>
+            @*<h3 id="reply-title" class="comment-reply-title">
+                    Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/shaped-blog/but-i-must-explain-to-you-how-all-this-mistaken/#respond" style="display: none;">Cancel reply</a></small>
+                </h3>*@
+            <p>
+                @Resources.PersianResources.ForAddCommentLogin <button type="button" class="btn btn-success" onclick="loadLoginPage();">@Resources.PersianResources.Login</button>
+            </p>
+        </div>
+        <!-- #respond -->
+    }
+
+    else
+    {
+        <div id="commentForm">
+            @{
+                Html.RenderAction("AddComment", "Comment", new { id = Model.Id });
+            }
+        </div>
+
+    }
+
+</div>
+
+@section Related
+{
+    @Html.Action("Index", "Related", new { categoryId = Model.CategoryId, postId = Model.Id })
+}
+
+@section scripts
+{
+    <script>
+        $.ajax({
+            url: "/Statistics/Index/@Model.Id",
+            type: 'POST'
+        });
+    </script>
+}

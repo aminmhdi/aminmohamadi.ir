@@ -1,0 +1,67 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@{
+  Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+  ViewBag.Title = Resources.PersianResources.Contact;
+}
+@model MyWeb.ViewModel.Contact.ContactInsertViewModel
+
+@using (Ajax.BeginForm("Index", "Contact", new { area = "" },
+          new AjaxOptions
+          {
+              HttpMethod = "POST",
+              InsertionMode = InsertionMode.Replace,
+              UpdateTargetId = "contactForm",
+              OnComplete = "onComplete",
+              OnSuccess = "AjaxForm.ResetButton('contactAdd')",
+              OnFailure = "AjaxForm.ResetButton('contactAdd')"
+          }, new { @class = "", id = "contactForm" }))
+{
+
+@Html.AntiForgeryToken()
+
+<div class="panel small-panel">
+    <header class="panel-heading">
+        <i class="fa fa-user append-icon"></i>
+        @Resources.PersianResources.Contact
+    </header>
+    <div class="panel-body">
+        @if (ViewBag.ErrorMessage != null)
+        {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+        }
+        @if (ViewBag.SuccessMessage != null)
+        {
+        <div class="alert alert-success">
+            @ViewBag.SuccessMessage
+        </div>
+        }
+        <div class="form-group col-md-12">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Name, new { @autocomplete = "off", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Title, new { @autocomplete = "off", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-md-12">
+            @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = "10" })
+            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-md-9">
+            @Html.MathCaptcha("~/Views/Shared/_CaptchaPartial.cshtml")
+        </div>
+        <div class="form-group col-md-3">
+            <label class="control-label">&nbsp;</label>
+            <button type="submit" id="contactAdd" onclick="AjaxForm.CustomSubmit(this, 'contactForm')" autocomplete="off" data-loading-text="@Resources.PersianResources.Sending"  class="btn btn-success btn-block">@Resources.PersianResources.Submit</button>
+        </div>
+    </div>
+</div>
+}
+
+

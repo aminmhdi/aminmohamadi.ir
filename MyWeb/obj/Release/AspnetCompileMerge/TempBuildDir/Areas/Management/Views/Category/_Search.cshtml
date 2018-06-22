@@ -1,0 +1,44 @@
+﻿@using MyWeb.ViewModel.Category
+@model CategorySearchRequest
+
+<div class="row">
+    <div class="col-xs-6 col-md-3 col-lg-3 pull-right">
+        <div class="form-group">
+            <i class="fa fa-user append-icon"></i>
+            @Resources.PersianResources.Categories
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-3 col-lg-3 pull-left text-left max-width-185px">
+        <div class="form-group">
+            <a href="@Url.Action("Create")" class="btn btn-info btn-sm pull-left">
+                <i class="fa fa-plus append-icon" aria-hidden="true"></i>
+                @Resources.PersianResources.CreateNewCategory
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
+        <div class="form-group">
+            @using (Ajax.BeginForm("ListAjax", "Category", new { area = "Management" },
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "categoryList",
+                    OnComplete = "onComplete",
+                    OnSuccess = "AjaxForm.ResetButton('categorySearchButton')",
+                    OnFailure = "AjaxForm.ResetButton('categorySearchButton')"
+                }, new { @class = "", id = "categorySearchForm" }))
+            {
+                <div class="input-group" dir="ltr">
+                    <span class="input-group-btn">
+                        <button type="button" id="categorySearchButton" onclick="AjaxForm.CustomSubmit(this, 'categorySearchForm')" autocomplete="off" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = Resources.PersianResources.Search, dir = "rtl"})
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

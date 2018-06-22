@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>عملیات</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>فعال</value>
+  </data>
+  <data name="AreYouSureToDeleteThis" xml:space="preserve">
+    <value>آیا از حذف مطمئن هستید؟</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>بازگشت به فهرست</value>
+  </data>
+  <data name="Both" xml:space="preserve">
+    <value>هر دو</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>تصویر امنیتی</value>
+  </data>
+  <data name="ChangeCaptcha" xml:space="preserve">
+    <value>تغییر تصویر</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>تماس</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>ایجاد</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="CreateNewContact" xml:space="preserve">
+    <value>ساخت مخاطب جدید</value>
+  </data>
+  <data name="CreateNewMessage" xml:space="preserve">
+    <value>ساخت پیام جدید</value>
+  </data>
+  <data name="CreateNewRole" xml:space="preserve">
+    <value>درج نقش جدید</value>
+  </data>
+  <data name="CreateNewUser" xml:space="preserve">
+    <value>درج کاربر جدید</value>
+  </data>
+  <data name="CreateRole" xml:space="preserve">
+    <value>ساخت نقش جدید</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>ساخت کاربر جدید</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>ایجاد کننده</value>
+  </data>
+  <data name="DefaultRoleForRegister" xml:space="preserve">
+    <value>گروه کاربری پیشفرض برای عضویت</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>حذف شده</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>جزییات</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>ویرایش مخاطب</value>
+  </data>
+  <data name="EditIncomingMessage" xml:space="preserve">
+    <value>ویرایش پیام دریافت شده</value>
+  </data>
+  <data name="EditOutgoingMessage" xml:space="preserve">
+    <value>ویرایش پیام ارسال شده</value>
+  </data>
+  <data name="EditRole" xml:space="preserve">
+    <value>ویرایش نقش</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>ویرایش کاربر</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="EmailConfirmation" xml:space="preserve">
+    <value>تأییدیه ایمیل</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>انگلیسی</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>زن</value>
+  </data>
+  <data name="FirstAndLastname" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>از</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>جنسیت</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>بالا</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>خانه</value>
+  </data>
+  <data name="IncomingMessage" xml:space="preserve">
+    <value>پیام دریافت شده</value>
+  </data>
+  <data name="IncomingMessageDetail" xml:space="preserve">
+    <value>جزییات پیام دریافت شده</value>
+  </data>
+  <data name="IncomingMessages" xml:space="preserve">
+    <value>پیام‌های دریافت شده</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ورود</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="Low" xml:space="preserve">
+    <value>پایین</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>مرد</value>
+  </data>
+  <data name="MessageSize" xml:space="preserve">
+    <value>تعداد پیام</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>هیچ داده ای یافت نشد</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>معمولی</value>
+  </data>
+  <data name="OutgoingMessage" xml:space="preserve">
+    <value>پیام ارسال شده</value>
+  </data>
+  <data name="OutgoingMessageDetail" xml:space="preserve">
+    <value>جزییات پیام ارسال شده</value>
+  </data>
+  <data name="OutgoingMessages" xml:space="preserve">
+    <value>پیام‌های ارسال شده</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>دسترسی ها</value>
+  </data>
+  <data name="Persian" xml:space="preserve">
+    <value>فارسی</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>موبایل</value>
+  </data>
+  <data name="PleaseEnterCaptchaAnswer" xml:space="preserve">
+    <value>لطفا پاسخ تصویر را وارد کنید</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>اولویت</value>
+  </data>
+  <data name="Reciever" xml:space="preserve">
+    <value>گیرنده</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>تاریخ عضویت</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>نقش</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>نام نقش</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>نقشها</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>انتخاب</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>انتخاب مخاطب</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>فرستنده</value>
+  </data>
+  <data name="SendImmediately" xml:space="preserve">
+    <value>ارسال فوری</value>
+  </data>
+  <data name="Sending" xml:space="preserve">
+    <value>در حال ارسال</value>
+  </data>
+  <data name="SendingDateTime" xml:space="preserve">
+    <value>زمان ارسال</value>
+  </data>
+  <data name="Setting" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="SmsServiceInformation" xml:space="preserve">
+    <value>اطلاعات سرویس پیامک</value>
+  </data>
+  <data name="SmsSize" xml:space="preserve">
+    <value>حجم (تعداد)</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>مرتب کن</value>
+  </data>
+  <data name="SystemAccountUser" xml:space="preserve">
+    <value>کاربر سیستمی</value>
+  </data>
+  <data name="SystemRole" xml:space="preserve">
+    <value>گروه کاربری سیستمی</value>
+  </data>
+  <data name="UserAdditionalInfomration" xml:space="preserve">
+    <value>مشخصات اختیاری</value>
+  </data>
+  <data name="UserEssentialInfomration" xml:space="preserve">
+    <value>مشخصات ضروری</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>مشخصات کاربر</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>مدیریت کاربران</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>گروه های کاربری</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="UserSetting" xml:space="preserve">
+    <value>تنظیمات کاربر</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>داشبورد</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>مدیریت</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>دسته بندی</value>
+  </data>
+  <data name="CategoryDetails" xml:space="preserve">
+    <value>جزییات دسته بندی</value>
+  </data>
+  <data name="CreateNewCategory" xml:space="preserve">
+    <value>ساخت دسته بندی جدید</value>
+  </data>
+  <data name="DeleteCategory" xml:space="preserve">
+    <value>حذف دسته بندی</value>
+  </data>
+  <data name="EditCategory" xml:space="preserve">
+    <value>ویرایش دسته بندی</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>دسته بندی ها</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>نوشته</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>نوشته‌ها</value>
+  </data>
+  <data name="CreateNewPost" xml:space="preserve">
+    <value>ساخت نوشته جدید</value>
+  </data>
+  <data name="DeletePost" xml:space="preserve">
+    <value>حذف نوشته</value>
+  </data>
+  <data name="PostDetails" xml:space="preserve">
+    <value>جزییات نوشته</value>
+  </data>
+  <data name="EditPost" xml:space="preserve">
+    <value>ویرایش نوشته</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>نمایش</value>
+  </data>
+  <data name="Sorting" xml:space="preserve">
+    <value>مرتب سازی</value>
+  </data>
+  <data name="Banned" xml:space="preserve">
+    <value>مسدود شده</value>
+  </data>
+  <data name="FileManager" xml:space="preserve">
+    <value>مدیریت فایلها</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>درباره</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>نظرات</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>نظر</value>
+  </data>
+  <data name="CommentDetails" xml:space="preserve">
+    <value>جزییات نظر</value>
+  </data>
+  <data name="CreateNewComment" xml:space="preserve">
+    <value>ساخت نظر جدید</value>
+  </data>
+  <data name="DeleteComment" xml:space="preserve">
+    <value>حذف نظر</value>
+  </data>
+  <data name="EditComment" xml:space="preserve">
+    <value>ویرایش نظر</value>
+  </data>
+  <data name="NoPost" xml:space="preserve">
+    <value>هنوز هیچ مطلبی منتشر نشده است</value>
+  </data>
+  <data name="NoPostInCategory" xml:space="preserve">
+    <value>هیچ نوشته ای در این گروه وجود ندارد</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>صفحه</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>ساخت حساب کاربری جدید</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>ثبت</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>کلمات کلیدی</value>
+  </data>
+  <data name="RelatedPost" xml:space="preserve">
+    <value>نوشته های مرتبط</value>
+  </data>
+  <data name="RecentPost" xml:space="preserve">
+    <value>آخرین نوشته ها</value>
+  </data>
+  <data name="ForForgotPasswordEnterEmail" xml:space="preserve">
+    <value>برای بازیابی کلمه عبور کافیست ایمیل خود را وارد نمایید تا برای شما لینک فعال سازی ارسال شود.</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>بازیابی کلمه عبور</value>
+  </data>
+  <data name="RecentComments" xml:space="preserve">
+    <value>آخرین نظرات </value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>ارسال ایمیل</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>کلمه عبور را فراموش کرده ام</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>تغییر کلمه عبور</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>انتخاب فایل</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>تغییر</value>
+  </data>
+  <data name="ProfileEdit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="YourCommentWasAddedSuccessFully" xml:space="preserve">
+    <value>نظر شما با موفقیت ثبت شد و بعد از بررسی نمایش داده خواهد شد.</value>
+  </data>
+  <data name="YourContactWasSentSuccessfully" xml:space="preserve">
+    <value>پیام شما با موفقیت ارسال شد.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>بروز رسانی</value>
+  </data>
+  <data name="ViewCount" xml:space="preserve">
+    <value>بازدید</value>
+  </data>
+  <data name="UncofirmedComments" xml:space="preserve">
+    <value>نظرات تایید نشده</value>
+  </data>
+  <data name="ForAddCommentLogin" xml:space="preserve">
+    <value>برای نظر دادن کافیست وارد حساب کاربری خود شوید.</value>
+  </data>
+  <data name="LoginToAccount" xml:space="preserve">
+    <value>ورود به حساب کاربری</value>
+  </data>
+  <data name="NotRegistered" xml:space="preserve">
+    <value>قبلاً در سایت ثبت نام نکرده اید؟</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>منتظر بمانید...</value>
+  </data>
+  <data name="UsersLogin" xml:space="preserve">
+    <value>ورود کاربران</value>
+  </data>
+</root>

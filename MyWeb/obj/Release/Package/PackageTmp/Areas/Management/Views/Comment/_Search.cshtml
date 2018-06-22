@@ -1,0 +1,44 @@
+﻿@using MyWeb.ViewModel.Comment
+@model CommentSearchRequest
+
+<div class="row">
+    <div class="col-xs-6 col-md-3 col-lg-3 pull-right">
+        <div class="form-group">
+            <i class="fa fa-user append-icon"></i>
+            @Resources.PersianResources.Comments
+        </div>
+    </div>
+    @*<div class="col-xs-6 col-md-3 col-lg-3 pull-left text-left max-width-185px">
+        <div class="form-group">
+            <a href="@Url.Action("Create")" class="btn btn-info btn-sm pull-left">
+                <i class="fa fa-plus append-icon" aria-hidden="true"></i>
+                @Resources.PersianResources.CreateNewComment
+            </a>
+        </div>
+    </div>*@
+    <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
+        <div class="form-group">
+            @using (Ajax.BeginForm("ListAjax", "Comment", new { area = "Management" },
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "commentList",
+                    OnComplete = "onComplete",
+                    OnSuccess = "AjaxForm.ResetButton('commentSearchButton')",
+                    OnFailure = "AjaxForm.ResetButton('commentSearchButton')"
+                }, new { @class = "", id = "commentSearchForm" }))
+            {
+                <div class="input-group" dir="ltr">
+                    <span class="input-group-btn">
+                        <button type="button" id="commentSearchButton" onclick="AjaxForm.CustomSubmit(this, 'commentSearchForm')" autocomplete="off" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    @Html.TextBoxFor(m => m.Body, new { @class = "form-control", placeholder = Resources.PersianResources.Search, dir = "rtl"})
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

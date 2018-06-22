@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Web", "MyWeb\MyWeb.Web.csproj", "{7658BF18-0085-4F69-902E-33E83698A5F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.AutoMapperProfiles", "MyWeb.AutoMapperProfiles\MyWeb.AutoMapperProfiles.csproj", "{B7DEDA44-8E90-4B79-BA88-C28A194F8C5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.DataLayer", "MyWeb.DataLayer\MyWeb.DataLayer.csproj", "{7B2B1912-2DCD-4D94-9450-FF90C8B39BA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.DomainClasses", "MyWeb.DomainClasses\MyWeb.DomainClasses.csproj", "{9F900B27-53B9-4265-8B05-8F3C9A4EEF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.IocConfig", "MyWeb.IocConfig\MyWeb.IocConfig.csproj", "{71F5E335-AF4F-4C41-B814-ADD072009375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.ServiceLayer", "MyWeb.ServiceLayer\MyWeb.ServiceLayer.csproj", "{7A30417A-F18F-464C-A744-A3185B2E4699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Utility", "MyWeb.Utility\MyWeb.Utility.csproj", "{5A74C7AF-5524-4875-B624-8293BC4CBFFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.ViewModel", "MyWeb.ViewModel\MyWeb.ViewModel.csproj", "{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7658BF18-0085-4F69-902E-33E83698A5F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7658BF18-0085-4F69-902E-33E83698A5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7658BF18-0085-4F69-902E-33E83698A5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7658BF18-0085-4F69-902E-33E83698A5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7DEDA44-8E90-4B79-BA88-C28A194F8C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7DEDA44-8E90-4B79-BA88-C28A194F8C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7DEDA44-8E90-4B79-BA88-C28A194F8C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7DEDA44-8E90-4B79-BA88-C28A194F8C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2B1912-2DCD-4D94-9450-FF90C8B39BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2B1912-2DCD-4D94-9450-FF90C8B39BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2B1912-2DCD-4D94-9450-FF90C8B39BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2B1912-2DCD-4D94-9450-FF90C8B39BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F900B27-53B9-4265-8B05-8F3C9A4EEF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F900B27-53B9-4265-8B05-8F3C9A4EEF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F900B27-53B9-4265-8B05-8F3C9A4EEF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F900B27-53B9-4265-8B05-8F3C9A4EEF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F5E335-AF4F-4C41-B814-ADD072009375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F5E335-AF4F-4C41-B814-ADD072009375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F5E335-AF4F-4C41-B814-ADD072009375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F5E335-AF4F-4C41-B814-ADD072009375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A30417A-F18F-464C-A744-A3185B2E4699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A30417A-F18F-464C-A744-A3185B2E4699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A30417A-F18F-464C-A744-A3185B2E4699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A30417A-F18F-464C-A744-A3185B2E4699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A74C7AF-5524-4875-B624-8293BC4CBFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A74C7AF-5524-4875-B624-8293BC4CBFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A74C7AF-5524-4875-B624-8293BC4CBFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A74C7AF-5524-4875-B624-8293BC4CBFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D27BAAC-36E8-4D36-AE18-F44C2892DDF2}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://aminmohamadi.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MyWeb.AutoMapperProfiles\\MyWeb.AutoMapperProfiles.csproj
+		SccProjectName1 = MyWeb.AutoMapperProfiles
+		SccLocalPath1 = MyWeb.AutoMapperProfiles
+		SccProjectUniqueName2 = MyWeb.DataLayer\\MyWeb.DataLayer.csproj
+		SccProjectName2 = MyWeb.DataLayer
+		SccLocalPath2 = MyWeb.DataLayer
+		SccProjectUniqueName3 = MyWeb.DomainClasses\\MyWeb.DomainClasses.csproj
+		SccProjectName3 = MyWeb.DomainClasses
+		SccLocalPath3 = MyWeb.DomainClasses
+		SccProjectUniqueName4 = MyWeb.IocConfig\\MyWeb.IocConfig.csproj
+		SccProjectName4 = MyWeb.IocConfig
+		SccLocalPath4 = MyWeb.IocConfig
+		SccProjectUniqueName5 = MyWeb.ServiceLayer\\MyWeb.ServiceLayer.csproj
+		SccProjectName5 = MyWeb.ServiceLayer
+		SccLocalPath5 = MyWeb.ServiceLayer
+		SccProjectUniqueName6 = MyWeb.Utility\\MyWeb.Utility.csproj
+		SccProjectName6 = MyWeb.Utility
+		SccLocalPath6 = MyWeb.Utility
+		SccProjectUniqueName7 = MyWeb.ViewModel\\MyWeb.ViewModel.csproj
+		SccProjectName7 = MyWeb.ViewModel
+		SccLocalPath7 = MyWeb.ViewModel
+		SccProjectUniqueName8 = MyWeb\\MyWeb.Web.csproj
+		SccProjectName8 = MyWeb
+		SccLocalPath8 = MyWeb
+	EndGlobalSection
+EndGlobal

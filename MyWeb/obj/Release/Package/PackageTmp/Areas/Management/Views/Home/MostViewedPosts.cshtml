@@ -1,0 +1,50 @@
+﻿@using MyWeb.Utility
+@model List<MyWeb.ViewModel.Dashboard.MostViewedPostDashboardViewModel>
+@{
+    Layout = null;
+}
+<div class="table-responsive">
+    <table class="table m-b-0">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>@Resources.PersianResources.Post</th>
+            <th>@Resources.PersianResources.CreateDate</th>
+            @*<th>@Resources.PersianResources.Creator</th>*@
+            <th>@Resources.PersianResources.ViewCount</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            var i = 1;
+        }
+        @if (Model.Count != 0)
+        {
+
+            foreach (var message in Model)
+            {
+                <tr>
+                    <td>
+                        @(i++.GetPersianNumber())
+                    </td>
+                    <td>
+                        <a href="/Post/@message.Id/@message.Title.ToUrl()">
+                            @message.Title (@message.CategoryName)
+                        </a>
+                    </td>
+                    <td>@message.CreatedOn.ToPersianString().GetPersianNumber()</td>
+                    @*<td>@message.CreatorName</td>*@
+                    <td>@message.ViewCount.GetPersianNumber()</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">@Resources.PersianResources.NoData</td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+</div>

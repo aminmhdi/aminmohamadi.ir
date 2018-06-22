@@ -1,0 +1,161 @@
+﻿@model MyWeb.ViewModel.User.EditUserViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.EditUser;
+}
+
+<div class="panel">
+    <header class="panel-heading">
+        <i class="fa fa-pencil append-icon"></i>
+        @Resources.PersianResources.EditUser
+        <a href="@Url.Action("Index")" class="btn btn-default btn-sm pull-left">
+            <i class="fa fa-long-arrow-left append-icon" aria-hidden="true"></i>
+            @Resources.PersianResources.BackToList
+        </a>
+    </header>
+    <div class="panel-body">
+        <div class="row">
+            <div>
+                @using (Html.BeginForm("Edit", "User", new { area = "Management" }, FormMethod.Post, new { enctype = "multipart/form-data", User = "form", @class = "", autocomplate = "off", id = "editUserForm" }))
+                {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(a => a.Id)
+                <div class="col-md-12" id="requiredInfo">
+                    <div class="clear">
+                        <h3 class="section-heading"><i class="fa fa-angle-double-down append-icon text-orange" aria-hidden="true"></i>@Resources.PersianResources.UserEssentialInfomration</h3>
+                        <div class=" section-body clearfix clear">
+                            <div class="form-group col-md-3">
+                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                @Html.LabelFor(m => m.NameForShow, new { @class = "control-label" })
+                                @Html.TextBoxFor(m => m.NameForShow, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.NameForShow, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12" id="optionalInfo">
+                    <h3 class="section-heading"><i class="fa fa-angle-double-down append-icon text-orange" aria-hidden="true"></i>@Resources.PersianResources.UserAdditionalInfomration</h3>
+                    <div class=" section-body clearfix clear">
+                        <div class="form-group col-md-12">
+                            @Html.LabelFor(m => m.AdministratorComment, new { @class = "control-label" })
+                            @Html.TextAreaFor(m => m.AdministratorComment, new { cols = 2, @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.AdministratorComment, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            @Html.LabelFor(m => m.BirthDay, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.BirthDay, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            @Html.LabelFor(m => m.GooglePlusId, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.GooglePlusId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.GooglePlusId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.LabelFor(m => m.FaceBookId, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.FaceBookId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FaceBookId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.LabelFor(m => m.AvatarFileName, new { @class = "control-label" })
+                            <div class="file-upload-wrapper" data-text="@Html.DisplayNameFor(m => m.AvatarFileName)">
+                                @Html.TextBoxFor(m => m.AvatarImage, new { type = "file", accept = "image/*" })
+                                @*<input id="AvatarImage" name="AvatarImage" type="file" accept="image/*">*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-md-12" id="settings">
+                        <h3 class="section-heading"><i class="fa fa-angle-double-down append-icon text-orange" aria-hidden="true"></i>@Resources.PersianResources.UserSetting</h3>
+                        <div class=" section-body clearfix clear clearfix clear pad-b-0">
+                            <div class="col-md-4 checkbox-custom form-group">
+                                @Html.CheckBoxFor(m => m.IsBanned, new { @class = "checkbox-inline" })
+                                @Html.LabelFor(m => m.IsBanned, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4 checkbox-custom form-group">
+                                @Html.CheckBoxFor(m => m.IsDeleted, new { @class = "checkbox-inline" })
+                                @Html.LabelFor(m => m.IsDeleted, new { @class = "control-label" })
+                            </div>
+
+                            <div class="col-md-4 checkbox-custom form-group">
+                                @Html.CheckBoxFor(m => m.CanChangeProfilePicture, new { @class = "checkbox-inline" })
+                                @Html.LabelFor(m => m.CanChangeProfilePicture, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4 checkbox-custom form-group">
+                                @Html.CheckBoxFor(m => m.CanUploadFile, new { @class = "checkbox-inline" })
+                                @Html.LabelFor(m => m.CanUploadFile, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4 checkbox-custom form-group">
+                                @Html.CheckBoxFor(m => m.CanModifyFirsAndLastName, new { @class = "checkbox-inline" })
+                                @Html.LabelFor(m => m.CanModifyFirsAndLastName, new { @class = "control-label" })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-12" id="permissions">
+                            @CheckBoxListBuilder.CheckBoxList("PermissionIds", ViewBag.Permissions)
+                        </div>*@
+                    <div id="roles" class="col-md-12 form-group">
+                        <div class="clearfix">
+                            <h3 class="section-heading"><i class="fa fa-angle-double-down append-icon text-orange" aria-hidden="true"></i>@Resources.PersianResources.UserRoles</h3>
+                            <div class="checkbox-custom  section-body clearfix clear clearfix clear CheckBoxList-4">@CheckBoxListBuilder.CheckBoxList("RoleIds", ViewBag.Roles)</div>
+                        </div>
+
+                    </div>
+                    <div class="pull-left col-md-6">
+                        <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'editUserForm')" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-success pull-left">
+                            <i class="fa fa-floppy-o append-icon" aria-hidden="true"></i>@Resources.PersianResources.Save
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <div class="pull-right col-md-6">
+                @if (!Model.IsSystemAccount)
+                {
+                    using (Html.BeginForm("Delete", "User", new { area = "Management" }, FormMethod.Post,
+                      new
+                      {
+                          role = "form",
+                          @class = "form-horizontal",
+                          autocomplete = "off",
+                          id = "deleteUserForm"
+                      }))
+                    {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(a => a.Id)
+                    <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'deleteUserForm')" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash-o append-icon" aria-hidden="true"></i>@Resources.PersianResources.Delete
+                    </button>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    </script>
+}

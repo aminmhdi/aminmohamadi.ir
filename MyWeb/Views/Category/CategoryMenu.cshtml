@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "";
+}
+@using MyWeb.Utility
+@model IEnumerable<MyWeb.ViewModel.Category.CategoryMenuViewModel>
+
+
+@foreach (var item in Model)
+{
+    <li class="menu-item-@item.Id">
+        <a title="@item.Title" href="/Category/@item.Id/@item.Title.ToUrl()">@item.Title</a>
+    </li>
+}

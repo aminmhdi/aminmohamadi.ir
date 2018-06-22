@@ -1,0 +1,50 @@
+﻿@model MyWeb.ViewModel.Comment.CommentListViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.Comments;
+}
+
+<div class="panel">
+    <header class="panel-heading clearfix">
+        @{Html.RenderPartial("_Search", Model.SearchRequest);}
+    </header>
+    <div class="panel-body" id="commentList">
+        @{
+            Html.RenderPartial("_ListAjax", Model);
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function onComplete() {
+            //
+        }
+
+        $(document).on("click", ".btn-active", function () {
+            $.ajax({
+                type: "Get",
+                data: {
+                    Id: $(this).data("id"),
+                    PageIndex: $(this).data("page"),
+                    Body: $("#Body").val()
+                },
+                url: '@Url.Action("Active", "Comment", new { Area = "Management" })',
+                beforeSend: function () {
+                    //$("#commentList").html('<div class="loader"></div>');
+                },
+                success: function (result) {
+                    $("#commentList").html(result);
+                },
+                error: function () {
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        });
+    </script>
+}

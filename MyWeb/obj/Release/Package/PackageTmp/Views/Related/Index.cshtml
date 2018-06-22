@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "";
+}
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Post.PostRelatedOrRecentListViewModel
+  
+@if (Model.Posts.Count() != 0)
+{
+    <div class="widget">
+    <h2 class="widget-title">@Resources.PersianResources.RelatedPost</h2>
+        <ul>
+            @foreach (var item in Model.Posts)
+            {
+            <li>
+                <a href="/Post/@item.Id/@item.Title.ToUrl()">@item.Title</a>
+            </li>
+            }
+        </ul>
+    </div>   
+}
+

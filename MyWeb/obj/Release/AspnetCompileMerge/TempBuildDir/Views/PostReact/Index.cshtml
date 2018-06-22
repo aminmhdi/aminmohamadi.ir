@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity
+@using MyWeb.Utility
+@model ICollection<MyWeb.ViewModel.PostReact.PostReactDetailViewModel>
+@{
+  Layout = "";
+  long postId = long.Parse(ViewBag.PostId.ToString());
+  bool? reactStatus = null;
+  if (!string.IsNullOrEmpty(User.Identity.GetUserId()))
+  {
+      var result = Model.FirstOrDefault(q => q.UserId == long.Parse(User.Identity.GetUserId()));
+      if (result != null)
+      {
+          reactStatus = result.Like;
+      }
+  }
+}
+<div id="reactForm" class="like">
+    @using (Html.BeginForm("Index", "PostReact", FormMethod.Post, new { id = "likeForm", @class = "inline-block" }))
+    {
+    @Html.AntiForgeryToken()
+    @Html.Hidden("PostId", postId)
+    @Html.Hidden("UserId", User.Identity.GetUserId())
+    @Html.Hidden("Like", true)
+    <span class="@(reactStatus != null ? (reactStatus.Value ? "active" : "") : "")">
+        <span class="lcnt">@Model.Count(q => q.Like).GetPersianNumber()</span>
+        <span>
+            <a type="submit" id="btn-like" href="javascript:void(0)">
+                <i class="fa fa-2x fa-thumbs-o-up text-success"></i>
+            </a>
+        </span>
+    </span>
+
+    <span class="@(reactStatus != null ? (!reactStatus.Value ? "active" : "") : "")">
+        <span class="lcnt">@Model.Count(q => !q.Like).GetPersianNumber()</span>
+        <span>
+            <a type="submit" id="btn-unlike" href="javascript:void(0)">
+                <i class="fa fa-2x fa-thumbs-o-down text-danger"></i>
+            </a>
+        </span>
+    </span>
+    }
+</div>

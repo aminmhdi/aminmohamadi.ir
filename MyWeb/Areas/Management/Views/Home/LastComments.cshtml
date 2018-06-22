@@ -1,0 +1,61 @@
+﻿@using MyWeb.Utility
+@model MyWeb.ViewModel.Comment.CommentMainListViewModel
+@{
+    Layout = null;
+}
+<div class="table-responsive">
+    <table class="table m-b-0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>@Resources.PersianResources.Comment</th>
+                <th>@Resources.PersianResources.Post</th>
+                <th>@Resources.PersianResources.CreateDate</th>
+                <th>@Resources.PersianResources.Active</th>
+                <th>@Resources.PersianResources.Creator</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Comments.Count() != 0)
+            {
+                var i = 1;
+                foreach (var message in Model.Comments)
+                {
+                    <tr>
+                        <td>@(i++.GetPersianNumber())</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px;">
+                            @message.Body
+                        </td>
+                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">
+                            <a href="/Post/@message.PostId/@message.PostTitle.ToUrl()">
+                                <span>
+                                    @message.PostTitle
+                                </span>
+                            </a>
+                        </td>
+                        <td>@message.CreatedOn.ToPersianString("MM/dd HH:mm").GetPersianNumber()</td>
+                        <td>
+                            <div class="checkbox-custom checkbox-primary checkbox-single relative inline-block">
+                                @Html.CheckBoxFor(modelItem => message.IsActive, new { disabled = "disabled" })
+                                <label></label>
+                            </div>
+                        </td>
+                        <td>
+                            @*<i class="middle-inline">
+                                    <img src="/File?folder=Avatar&file=@(message.Creator.Id).jpg" width="10" height="10" alt="@message.Creator.NameForShow" title="@message.Creator.NameForShow" class="profileImage">
+                                </i>*@
+                            @message.CreatorName
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">@Resources.PersianResources.NoData</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

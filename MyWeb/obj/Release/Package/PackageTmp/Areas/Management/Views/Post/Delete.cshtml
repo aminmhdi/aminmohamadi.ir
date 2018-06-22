@@ -1,0 +1,86 @@
+﻿@using System.Globalization
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Post.PostDetailViewModel
+@{
+    ViewBag.Title = Resources.PersianResources.DeletePost;
+}
+
+<div class="panel">
+    <header class="panel-heading clearfix">
+        <i class="fa fa-trash append-icon" aria-hidden="true"></i>
+        @Resources.PersianResources.DeletePost
+        <a href="@Url.Action("Index")" class="btn btn-default btn-sm pull-left">
+            <i class="fa fa-long-arrow-left append-icon" aria-hidden="true"></i>
+            @Resources.PersianResources.BackToList
+        </a>
+    </header>
+    <div class="panel-body">
+        <h4>@Resources.PersianResources.Post</h4>
+        <hr />
+        <div class="div-striped form-group">
+            <div class="clearfix">
+                <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                    @Html.DisplayNameFor(model => model.Title)
+
+
+                </div><div class="col-xs-8 col-md-9 col-lg-10">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                    @Html.DisplayNameFor(model => model.Summary)
+                </div>
+                <div class="col-xs-8 col-md-9 col-lg-10">
+                    @Html.Raw(Model.Summary)
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                    @Html.DisplayNameFor(model => model.Creator)
+
+
+                </div><div class="col-md-9 col-lg-10">
+                    @Html.DisplayFor(model => model.Creator.NameForShow) (@Model.CreatedOn.ToPersianString("yyyy/MM/dd - HH:mm").GetPersianNumber())
+                </div>
+            </div>
+
+            @{
+                if (Model.ModifiedOn != null)
+                {
+                    <div class="clearfix">
+                        <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                            @Html.DisplayNameFor(model => model.Modifier)
+
+
+                        </div><div class="col-md-9 col-lg-10">
+                            @Html.DisplayFor(model => model.Modifier.NameForShow) (@Model.ModifiedOn.Value.ToPersianString("yyyy/MM/dd - HH:mm").GetPersianNumber())
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="clearfix">
+                <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </div><div class="col-md-9 col-lg-10">
+                    <div class="checkbox-custom checkbox-success checkbox-single relative inline-block">
+                        @Html.CheckBoxFor(model => model.IsActive, new { disabled = "disabled" })
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color text-left">
+                <strong>@Resources.PersianResources.AreYouSureToDeleteThis</strong>
+                <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o append-icon" aria-hidden="true"></i>@Resources.PersianResources.Delete</button>
+            </div>
+        }
+    </div>
+</div>

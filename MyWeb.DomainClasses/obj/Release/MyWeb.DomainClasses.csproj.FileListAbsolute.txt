@@ -1,0 +1,16 @@
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\MyWeb.DomainClasses.dll.config
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\MyWeb.DomainClasses.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\MyWeb.DomainClasses.pdb
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\EntityFramework.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\EntityFramework.SqlServer.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\EntityFramework.xml
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\EntityFramework.SqlServer.xml
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\obj\Release\MyWeb.DomainClasses.csprojResolveAssemblyReference.cache
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\obj\Release\MyWeb.DomainClasses.csproj.CoreCompileInputs.cache
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\obj\Release\MyWeb.DomainClasses.dll
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\obj\Release\MyWeb.DomainClasses.pdb
+D:\Projects\AminMohamadi.ir\MyWeb.DomainClasses\obj\Release\MyWeb.DomainClasses.csproj.CopyComplete

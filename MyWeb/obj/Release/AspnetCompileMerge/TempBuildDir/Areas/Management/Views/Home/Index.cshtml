@@ -1,0 +1,396 @@
+﻿@using MyWeb.Utility
+@{
+  ViewBag.Title = Resources.PersianResources.Dashboard;
+}
+@section header{
+    <link href="/Content/Css/morris.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="@Url.Action("Create", "Post", new { area="Management" })" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.CreateNewPost" data-original-title="@Resources.PersianResources.CreateNewPost">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+            <div id="websiteStatistics" class="row">
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    @Resources.PersianResources.Posts: @(0.GetPersianNumber())
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    @Resources.PersianResources.UncofirmedComments: @(0.GetPersianNumber())
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    @Resources.PersianResources.Categories: @(0.GetPersianNumber())
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    @Resources.PersianResources.Users: @(0.GetPersianNumber())
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-6">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="CountOfWebsiteViewForToDayInHoursUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-b-0">بازدید ساعتی</h4>
+
+            <div id="morrisBar-hourlyVisit" class="positionRelative" style="height: 280px;">
+                <div class="loader"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-6">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="CountOfWebsiteViewIn30DaysAgoUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-b-0">بازدیدها در سی روز گذشته</h4>
+
+            <div id="morrisLine-30DaysVisit" class="positionRelative" style="height: 280px;">
+                <div class="loader"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-5">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="CountOfWebsiteViewIn12MonthsAgoUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-t-0">بازدیدها در ماه های گذشته</h4>
+
+            <div id="morrisLine-12MonthsVisit" class="positionRelative" style="height: 280px;">
+                <div class="loader"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12 col-lg-4">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="CountOfWebsiteViewIn7YearsAgoUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-t-0">بازدیدها در سالهای گذشته</h4>
+
+            <div id="morrisLine-7YearsVisit" class="positionRelative" style="height: 280px;">
+                <div class="loader"></div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-12 col-lg-3">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="ViewersDevicesUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-t-0">دستگاهها</h4>
+
+            <div id="morrisDonut-Devices" class="positionRelative" style="height: 245px;">
+                <div class="loader"></div>
+            </div>
+
+            <div class="text-center">
+                <ul class="list-inline chart-detail-list m-b-0">
+                    <li>
+                        <h5 class="text-success"><i class="fa fa-circle append-icon"></i>رومیزی</h5>
+                    </li>
+                    <li>
+                        <h5 class="text-danger"><i class="fa fa-circle append-icon"></i>موبایل</h5>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-6">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="LastCommentsListUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-t-0 m-b-30">آخرین نظرات ارسال شده</h4>
+            <div id="LastComments" class="positionRelative" style="min-height: 280px;">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12 col-lg-6">
+        <div class="card-box">
+            <div class="btn-refresh">
+                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="@Resources.PersianResources.Update" onclick="MostViewedPostsListUpdate();">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </div>
+            <h4 class="header-title m-t-0 m-b-30">پر بیننده ترین نوشته ها</h4>
+            <div id="MostViewedPosts" class="positionRelative" style="min-height: 280px;">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="/Scripts/Chart/morris.min.js"></script>
+    <script src="/Scripts/Chart/raphael-min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            UpdateAllWidgets();
+        });
+
+        function UpdateAllWidgets() {
+            CountOfWebsiteViewForToDayInHoursUpdate();
+            CountOfWebsiteViewIn30DaysAgoUpdate();
+            CountOfWebsiteViewIn12MonthsAgoUpdate();
+            CountOfWebsiteViewIn7YearsAgoUpdate();
+            LastCommentsListUpdate();
+            MostViewedPostsListUpdate();
+            ViewersDevicesUpdate();
+            WebsiteStatisticsUpdate();
+            //setTimeout(UpdateAllWidgets, 3 * 60 * 1000);
+        }
+
+        function CountOfWebsiteViewForToDayInHoursUpdate() {
+            var jsonResult = "[]";
+            $.ajax({
+                url: "/Management/Home/CountOfWebsiteViewForToDayInHours",
+                type: "GET",
+                beforeSend: function () {
+                    $("#morrisBar-hourlyVisit").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    jsonResult = JSON.parse(data);
+
+                    $("#morrisBar-hourlyVisit").html('');
+
+                    var $barData = jsonResult;
+                    Morris.Bar({
+                        element: 'morrisBar-hourlyVisit',
+                        data: $barData,
+                        xkey: 'Hour',
+                        ykeys: ['Count'],
+                        labels: ['تعداد'],
+                        hideHover: 'auto',
+                        resize: true,
+                        gridLineColor: ['#eef0f2'],
+                        barColors: ['#188ae2'],
+                        //xLabelMargin: 1,
+                        pointSize: 0
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function CountOfWebsiteViewIn30DaysAgoUpdate() {
+            var jsonResult = "[]";
+            $.ajax({
+                url: "/Management/Home/CountOfWebsiteViewIn30DaysAgo",
+                type: "GET",
+                beforeSend: function () {
+                    $("#morrisLine-30DaysVisit").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    jsonResult = JSON.parse(data);
+
+                    $("#morrisLine-30DaysVisit").html('');
+
+                    var $data = jsonResult;
+                    Morris.Line({
+                        element: 'morrisLine-30DaysVisit',
+                        data: $data,
+                        xkey: 'Day',
+                        ykeys: ['Count'],
+                        //ykeys: ['a', 'b'],
+                        labels: ['تعداد'],
+                        fillOpacity: ['0.9'],
+                        pointFillColors: ['#ffffff'],
+                        pointStrokeColors: ['#999999'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#eef0f2',
+                        hideHover: 'auto',
+                        resize: true,
+                        pointSize: 0,
+                        lineColors: ['#10c469']
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function CountOfWebsiteViewIn12MonthsAgoUpdate() {
+            var jsonResult = "[]";
+            $.ajax({
+                url: "/Management/Home/CountOfWebsiteViewIn12MonthsAgo",
+                type: "GET",
+                beforeSend: function () {
+                    $("#morrisLine-12MonthsVisit").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    jsonResult = JSON.parse(data);
+
+                    $("#morrisLine-12MonthsVisit").html('');
+
+                    var $data = jsonResult;
+                    Morris.Bar({
+                        element: 'morrisLine-12MonthsVisit',
+                        data: $data,
+                        xkey: 'Month',
+                        ykeys: ['Count'],
+                        labels: ['تعداد'],
+                        hideHover: 'auto',
+                        resize: true,
+                        gridLineColor: ['#eef0f2'],
+                        barColors: ['#fdfc00'],
+                        pointSize: 0
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function CountOfWebsiteViewIn7YearsAgoUpdate() {
+            var jsonResult = "[]";
+            $.ajax({
+                url: "/Management/Home/CountOfWebsiteViewIn7YearsAgo",
+                type: "GET",
+                beforeSend: function () {
+                    $("#morrisLine-7YearsVisit").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    jsonResult = JSON.parse(data);
+
+                    $("#morrisLine-7YearsVisit").html('');
+
+                    var $data = jsonResult;
+                    Morris.Bar({
+                        element: 'morrisLine-7YearsVisit',
+                        data: $data,
+                        xkey: 'Year',
+                        ykeys: ['Count'],
+                        labels: ['تعداد'],
+                        hideHover: 'auto',
+                        resize: true,
+                        gridLineColor: ['#eef0f2'],
+                        barColors: ['#7000a9'],
+                        xLabelMargin: 1
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function LastCommentsListUpdate() {
+            $.ajax({
+                url: "/Management/Home/LastComments",
+                type: "GET",
+                beforeSend: function () {
+                    $("#LastComments").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    $("#LastComments").html(data);
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function MostViewedPostsListUpdate() {
+            $.ajax({
+                url: "/Management/Home/MostViewedPosts",
+                type: "GET",
+                beforeSend: function () {
+                    $("#MostViewedPosts").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (data) {
+                    $("#MostViewedPosts").html(data);
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function ViewersDevicesUpdate() {
+            $.ajax({
+                url: "/Management/Home/ViewersDevice",
+                type: "GET",
+                beforeSend: function () {
+                    $("#morrisDonut-Devices").html('<div class="loader"></div>');
+                },
+                compelete: function () {
+                },
+                success: function (result) {
+                    $("#morrisDonut-Devices").html('');
+                    Morris.Donut({
+                        element: 'morrisDonut-Devices',
+                        data: JSON.parse(result),
+                        resize: true,
+                        colors: ['#10c469', '#ff5b5b']
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function WebsiteStatisticsUpdate() {
+            $.ajax({
+                url: "/Management/Home/WebsiteStatistics",
+                type: "GET",
+                beforeSend: function () {
+                },
+                compelete: function () {
+                },
+                success: function (result) {
+                    $("#websiteStatistics").html(result);
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+}

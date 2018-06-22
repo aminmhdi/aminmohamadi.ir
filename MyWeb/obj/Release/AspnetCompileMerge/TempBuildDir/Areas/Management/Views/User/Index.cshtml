@@ -1,0 +1,73 @@
+﻿@model MyWeb.ViewModel.User.UserSearchRequest
+@{
+  ViewBag.Title = Resources.PersianResources.UserManagement;
+}
+<div class="panel">
+    <div class="panel-heading">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#advanceSearch" data-parent="#accordion">
+            <i class="fa fa-search append-icon"></i>
+            @Resources.PersianResources.Search
+        </a>
+    </div>
+    <div id="advanceSearch" class="panel-collapse collapse">
+        @using (Ajax.BeginForm("ListAjax", "User", new { area = "Management" }, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "userList",
+            OnComplete = "onComplete",
+            OnSuccess = "AjaxForm.ResetButton('userSearchButton')"
+        }, new { @class = "", id = "userSearchForm" }))
+        {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SearchFieldValue, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.SearchFieldValue, new { @class = "form-control input-sm" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SearchField, new { @class = "control-label" })
+                        @Html.EditorFor(m => m.SearchField)
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status, new { @class = "control-label" })
+                        @Html.EditorFor(m => m.Status)
+                    </div>
+                </div>
+
+                <div id="roles" class="col-xs-12 col-md-6 col-lg-5">
+                    <div class="form-group">
+                        <label>@Resources.PersianResources.Roles</label>
+                        <div class="row">
+                            <div class="checkbox-custom checkbox-30 checkbox-primary CheckBoxList-3"> @CheckBoxListBuilder.CheckBoxList("RoleIds", ViewBag.Roles)</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2 col-md-offset-10">
+                    <div class="form-group">
+                        <label></label>
+                        <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'userSearchForm')" id="userSearchButton"
+                                data-loading-text="@Resources.PersianResources.Sending" class="btn btn-primary btn-md width-100">
+                            <i class="fa fa-search append-icon"></i> @Resources.PersianResources.Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+<div id="userList">
+    @{Html.RenderAction("ListAjax", "User");}
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,68 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model MyWeb.ViewModel.Account.LoginViewModel
+@{
+    Layout = "";
+}
+
+
+<div class="account-pages">
+    @using (Html.BeginForm("LoginPartial", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form", id = "loginForm", autocomplete = "off", }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="m-t-40 card-box">
+            <div class="text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <strong>@Resources.PersianResources.LoginToAccount</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @* @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })*@
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control ltr", autocomplete = "off", placeholder = Html.DisplayNameFor(x => x.UserName) })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @* @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control ltr", placeholder = Html.DisplayNameFor(x => x.Password) })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="checkbox checkbox-custom">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox-inline" })
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "control-label" })
+                        <span class="passwordForgot">
+                            <a href="@Url.Action("ForgotPassword", "Account", new {area = ""})">
+                                @Resources.PersianResources.ForgetPassword
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="form-group">
+                        <h5 class="text-danger">
+                            @ViewBag.ErrorMessage
+                        </h5>
+                    </div>
+                }
+                <div class="form-group">
+                    @Html.MathCaptcha("~/Views/Shared/_CaptchaPartial.cshtml")
+                </div>
+                <div class="form-group m-t-30">
+                    @*<a href='@Url.Action("Login","Account")' class="btn btn-success btn-block">ورود به حساب کاربری</a>*@
+                    <button type="button" autocomplete="off" onclick="submitLoginForm(this);" data-loading-text="@Resources.PersianResources.PleaseWait" class="btn btn-info btn-block">
+                        @Resources.PersianResources.Login
+                    </button>
+                </div>
+                <div class="panel-default">
+                    <div class="panel-body bg-warning text-center">
+                        @Resources.PersianResources.NotRegistered
+                        <a href="@Url.Action("Register", "Account", new {area = ""})" autocomplete="off" class="btn btn-success">
+                            @Resources.PersianResources.Register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

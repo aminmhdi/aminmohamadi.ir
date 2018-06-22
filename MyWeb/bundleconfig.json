@@ -1,0 +1,56 @@
+[
+  {
+    "outputFileName": "Content/Main/Theme.min.css",
+    "inputFiles": [
+      "Content/Main/Theme.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Main/Responsive.min.css",
+    "inputFiles": [
+      "Content/Main/Responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/bootstrap-reset.min.css",
+    "inputFiles": [
+      "Content/Css/bootstrap-reset.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/bootstrap-rtl.min.min.css",
+    "inputFiles": [
+      "Content/Css/bootstrap-rtl.min.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/bootstrap.min.css",
+    "inputFiles": [
+      "Content/Css/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/customBootstrap.min.min.css",
+    "inputFiles": [
+      "Content/Css/customBootstrap.min.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/morris.min.css",
+    "inputFiles": [
+      "Content/Css/morris.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Css/Theme.min.css",
+    "inputFiles": [
+      "Content/Css/Theme.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/scripts.min.js",
+    "inputFiles": [
+      "Scripts/scripts.js"
+    ]
+  }
+]

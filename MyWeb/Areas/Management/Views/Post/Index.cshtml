@@ -1,0 +1,41 @@
+﻿@using MyWeb.ViewModel.Post
+@model PostListViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.Posts;
+}
+
+<div class="panel">
+    <header class="panel-heading">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#advanceSearch" data-parent="#accordion">
+            <i class="fa fa-search append-icon"></i>
+            @Resources.PersianResources.Search
+        </a>
+    </header>
+    @{Html.RenderPartial("_Search", Model.SearchRequest);}
+</div>
+
+<div class="panel">
+    <header class="panel-heading clearfix">
+        <i class="fa fa-user append-icon"></i> @Resources.PersianResources.Posts
+        <a href="@Url.Action("Create")" class="btn btn-info btn-sm pull-left">
+            <i class="fa fa-plus append-icon" aria-hidden="true"></i>
+            @Resources.PersianResources.CreateNewPost
+        </a>
+
+    </header>
+    <div class="panel-body" id="postList">
+        @{
+          Html.RenderPartial("_ListAjax", Model);
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function onComplete() {
+            //
+        }
+    </script>
+}

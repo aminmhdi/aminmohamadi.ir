@@ -1,0 +1,15 @@
+﻿@helper CheckBoxList(string name, IEnumerable<System.Web.Mvc.SelectListItem> items)
+{
+    
+    foreach (var item in items)
+    {
+        <text>
+            <div class="CheckBoxList">
+                <input type="checkbox" @if (item.Selected) { <text> checked="checked" </text>  }
+                       id="@item.Value" name="@name" value="@item.Value" class="checkbox-inline" />
+                <label for="@item.Value" class="control-label">@item.Text</label>
+            </div>
+        </text>
+    }
+   
+}

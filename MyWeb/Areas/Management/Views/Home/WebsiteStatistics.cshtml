@@ -1,0 +1,18 @@
+﻿@{
+  Layout = null;
+}
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Dashboard.WebsiteStatistics
+
+<div class="col-xs-6 col-md-3 col-lg-2">
+    @Resources.PersianResources.Posts: @Model.PostCount.GetPersianNumber()
+</div>
+<div class="col-xs-6 col-md-3 col-lg-2">
+    @Resources.PersianResources.UncofirmedComments: @Model.UnconfirmedCommentCount.GetPersianNumber()
+</div>
+<div class="col-xs-6 col-md-3 col-lg-2">
+    @Resources.PersianResources.Categories: @Model.CategoryCount.GetPersianNumber()
+</div>
+<div class="col-xs-6 col-md-3 col-lg-2">
+    @Resources.PersianResources.Users: @Model.UserCount.GetPersianNumber()
+</div>

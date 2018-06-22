@@ -1,0 +1,139 @@
+﻿@using MyWeb.Utility
+@using MyWeb.ViewModel.User
+@using PagedList
+@using PagedList.Mvc
+
+@model UserListViewModel
+<div class="panel">
+    <header class="panel-heading">
+        <i class="fa fa-users append-icon" aria-hidden="true"></i> @Resources.PersianResources.Users
+        <div class="btn-group pull-left" role="group">
+            <a href="@Url.Action("Create", "User", new { area = "Management" })" class="btn btn-info btn-sm">
+                <i class="fa fa-plus append-icon" aria-hidden="true"></i>
+                @Resources.PersianResources.CreateNewUser
+            </a>
+            <a href="javascript:void(0)" id="refreshBtn" class="btn btn-sm btn-default pull-right"><i class="fa fa-refresh"></i></a>
+        </div>
+    </header>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Resources.PersianResources.UserName</th>
+                            <th>@Resources.PersianResources.FirstAndLastname</th>
+                            <th>@Resources.PersianResources.Email</th>
+                            <th>@Resources.PersianResources.Banned</th>
+                            <th>@Resources.PersianResources.Deleted</th>
+                            <th>@Resources.PersianResources.EmailConfirmation</th>
+                            <th>@Resources.PersianResources.SystemAccountUser</th>
+                            <th>@Resources.PersianResources.RegisterDate</th>
+                            <th class="text-left">@Resources.PersianResources.Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                        <tr>
+                            <td>
+                                <strong>
+                                    @Html.ActionLink(@user.UserName, "Edit",
+                                        "User", new { id = user.Id, area = "Management" },
+                                        new { @class = "text-info" })
+                                </strong>
+
+                            </td>
+                            <td>@user.NameForShow</td>
+                            <td>@user.Email</td>
+                            <td>
+                                <div class="checkbox-custom checkbox-primary checkbox-single relative inline-block">
+                                    @Html.CheckBoxFor(modelItem => user.IsBanned, new { disabled = "disabled" })
+                                    <label></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox-custom checkbox-primary checkbox-single relative inline-block">
+                                    @Html.CheckBoxFor(modelItem => user.IsDeleted, new { disabled = "disabled" })
+                                    <label></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox-custom checkbox-primary checkbox-single relative inline-block">
+                                    @Html.CheckBoxFor(modelItem => user.EmailConfirmed, new { disabled = "disabled" })
+                                    <label></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox-custom checkbox-primary checkbox-single relative inline-block">
+                                    @Html.CheckBoxFor(modelItem => user.IsSystemAccount, new { disabled = "disabled" })
+                                    <label></label>
+                                </div>
+                            </td>
+                            <td>@user.RegisterDate.GetPersianNumber()</td>
+                            <td class="text-left">
+                                <a role="button" class="btn btn-sm btn-info btn-action" data-toggle="tooltip" data-original-title="@Resources.PersianResources.Edit" href="@Url.Action("Edit", "User", new {id = user.Id, area = "Management"})">
+                                    <i class='fa fa-pencil'></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+                <div class="text-left">
+                    @Html.PagedListPager(new StaticPagedList<UserViewModel>(Model.Users, Model.SearchRequest.PageIndex,
+                        (int)Model.SearchRequest.PageSize, Model.SearchRequest.Total),
+                        pageNumber => Url.Action("Index", "User", new { PageIndex = pageNumber }),
+                        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions
+                        {
+                            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                            MaximumPageNumbersToDisplay = 6
+                        },
+                            new AjaxOptions { AllowCache = false, HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "userList", OnComplete = "onComplete" }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel">
+    <header class="panel-heading">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#sorting" data-parent="#accordion">
+            <i class="fa fa-sort-amount-desc append-icon" aria-hidden="true"></i>
+            @Resources.PersianResources.Sorting
+        </a>
+    </header>
+    <div id="sorting" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    @using (Ajax.BeginForm("ListAjax", "User", new { area = "Management" }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "userList", OnComplete = "onComplete", OnSuccess = "AjaxForm.ResetButton('userSearchButton')" }, new { @class = "", id = "userFilterForm" }))
+                    {
+                    <div class="row">
+                        @Html.Hidden("SearchFieldValue", Model.SearchRequest.SearchFieldValue)
+                        @Html.Hidden("SearchField", Model.SearchRequest.SearchField)
+                        <div class="form-group col-xs-4 col-md-3 col-lg-3">
+                            @Html.EditorFor(a => Model.SearchRequest.SortBy, "~/Views/Shared/EditorTemplates/Enum.cshtml", "SortBy")
+                        </div>
+                        <div class="form-group col-xs-4 col-md-3 col-lg-3">
+                            @Html.EditorFor(a => Model.SearchRequest.SortDirection, "~/Views/Shared/EditorTemplates/Enum.cshtml", "SortDirection")
+                        </div>
+                        <div class="form-group col-xs-4 col-md-3 col-lg-3">
+                            @Html.EditorFor(a => Model.SearchRequest.PageSize, "~/Views/Shared/EditorTemplates/Enum.cshtml", "PageSize")
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3 col-lg-2">
+                            <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'userFilterForm')" id="userFilterButton"
+                                    data-loading-text="@Resources.PersianResources.Sending" class="btn btn-success btn-sm">
+                                @Resources.PersianResources.Sort
+                            </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

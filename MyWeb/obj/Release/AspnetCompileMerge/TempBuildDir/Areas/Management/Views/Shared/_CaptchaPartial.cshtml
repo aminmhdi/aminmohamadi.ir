@@ -1,0 +1,39 @@
+﻿@model CaptchaMvc.Models.MathBuildInfoModel
+@{
+  var id = Guid.NewGuid().ToString("N");
+  var functionName = string.Format("______{0}________", Guid.NewGuid().ToString("N"));
+<script type="text/javascript">
+
+        $(function() {
+            $('#@id').prop('disabled', false);
+        });
+
+        function @(functionName)() {
+            $('#@id').prop('disabled', true);
+            $.post("@Model.RefreshUrl",
+                { @Model.TokenParameterName: $('#@Model.TokenElementId').val() },
+                function() {
+                    $('#@id').prop('disabled', false);
+                });
+            return false;
+        }
+</script>
+
+}
+<label class="control-label">@Resources.PersianResources.Captcha</label>
+<div class="relative captcha-control">
+    @Html.TextBox(Model.InputElementId, null, new Dictionary<string, object>() { { "data-val", "true" },
+        { "data-val-required", Resources.PersianResources.PleaseEnterCaptchaAnswer }, { "class", "form-control" },{"autocomplete","off" },{"dir","ltr"}})
+    @Html.ValidationMessage(Model.InputElementId, new { @class = "text-danger" })
+
+    <figure>
+        <img id="@Model.ImageElementId" src="@Model.ImageUrl" alt="@Resources.PersianResources.Captcha" height="32" />
+        @Html.Hidden(Model.TokenElementId, Model.TokenValue)
+        <figcaption>
+            <a href="javascript:void(0)" id="@id" onclick="@functionName" class="btn btn-sm btn-info flat-border">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </a>
+        </figcaption>
+    </figure>
+</div>
+

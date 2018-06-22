@@ -1,0 +1,49 @@
+﻿@{
+  ViewBag.Title = Resources.PersianResources.Roles;
+}
+
+<div class="panel">
+    <div class="panel-heading clearfix">
+        <div class="row">
+            <div class="col-xs-6 col-md-3 col-lg-3 pull-right">
+                <div class="form-group">
+                    <i class="fa fa-unlock-alt append-icon" aria-hidden="true"></i>
+                    @Resources.PersianResources.Roles
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3 col-lg-3 pull-left text-left max-width-155px">
+                <div class="form-group">
+                    <a href="@Url.Action("Create", "Role", new {area = "Management"})" class="btn btn-info btn-sm">
+                        <i class="fa fa-plus append-icon" aria-hidden="true"></i>
+                        @Resources.PersianResources.CreateNewRole
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
+                <div class="form-group">
+                    @using (Ajax.BeginForm("ListAjax", "Role", new { area = "Management" }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "roleList", OnComplete = "onComplete", OnSuccess = "AjaxForm.ResetButton('searchRoleButton')" }, new { @class = "form-horizontal", autocomplete = "off", id = "roleSearchForm" }))
+                    {
+                    <div class="input-group" dir="ltr">
+                        <span class="input-group-btn">
+                            <button type="button" id="searchRoleButton" onclick="AjaxForm.CustomSubmit(this, 'roleSearchForm')" autocomplete="off" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+
+                        <input dir="rtl" type="text" name="term" class="form-control" placeholder="@Resources.PersianResources.Search">
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="roleList">
+        @{Html.RenderAction("ListAjax", "Role");}
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

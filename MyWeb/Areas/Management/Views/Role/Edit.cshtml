@@ -1,0 +1,76 @@
+﻿@model MyWeb.ViewModel.Role.EditRoleViewModel
+@{
+    ViewBag.Title = Resources.PersianResources.EditRole;
+}
+<div class="panel">
+    <header class="panel-heading">
+        <i class="fa fa-pencil append-icon"></i>@Resources.PersianResources.EditRole
+        <a href="@Url.Action("Index")" class="btn btn-default btn-sm pull-left">
+            <i class="fa fa-long-arrow-left append-icon" aria-hidden="true"></i>@Resources.PersianResources.BackToList
+        </a>
+    </header>
+
+    @using (Html.BeginForm("Edit", "Role", new { area = "Management" }, FormMethod.Post, new { role = "form", @class = "", autocomplete = "off", id = "editRoleForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(a => a.Id)
+
+
+        <div class="panel-body">
+            <div class="form-group col-md-3">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <div class="col-md-4 checkbox checkbox-custom checkbox-34">
+                    @Html.CheckBoxFor(m => m.IsActive, new { @class = "checkbox-inline" })
+                    @Html.LabelFor(m => m.IsActive, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 checkbox checkbox-custom checkbox-34">
+                    @Html.CheckBoxFor(m => m.IsDefaultForRegister, new { @class = "checkbox-inline", @disabled = "disabled" })
+                    @Html.LabelFor(m => m.IsDefaultForRegister, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 checkbox checkbox-custom checkbox-34">
+                    @Html.CheckBoxFor(m => m.IsSystemRole, new { @class = "checkbox-inline", @disabled = "disabled" })
+                    @Html.LabelFor(m => m.IsSystemRole, new { @class = "control-label" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel">
+            <header class="panel-heading">
+                <i class="fa fa-unlock-alt append-icon" aria-hidden="true"></i>@Resources.PersianResources.Permissions
+            </header>
+            <div class="panel-body">
+                <div class="checkbox checkbox-custom CheckBoxList-2 clearfix checkbox-strip-2"> @CheckBoxListBuilder.CheckBoxList("PermissionNames", ViewBag.Permissions)</div>
+                <div class="col-md-12 text-left">
+                    <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'editRoleForm')" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-success">
+                        <i class="fa fa-floppy-o append-icon"></i> @Resources.PersianResources.Save
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    }
+
+    <div class="panel-body">
+        @using (Html.BeginForm("Delete", "Role", new { area = "Management" }, FormMethod.Post, new { role = "form", @class = "form-horizontal", autocomplate = "off", id = "deleteRoleForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(a => a.Id)
+            <button type="button" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'deleteRoleForm')" data-loading-text="@Resources.PersianResources.Sending" class="btn btn-danger">
+                <i class="fa fa-trash append-icon"></i>@Resources.PersianResources.Delete
+            </button>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,16 @@
+﻿@model DateTime?
+
+@{
+    if (Model != DateTime.MinValue)
+    {
+        IFormatProvider formatProvider = new System.Globalization.CultureInfo("fa-IR");
+        @Html.TextBoxFor(m => m, new {@class = "form-control datepicker", Value = Model?.ToString("yyyy/MM/dd HH:mm:ss", formatProvider)})
+    }
+
+    else
+    {
+        IFormatProvider formatProvider = new System.Globalization.CultureInfo("fa-IR");
+        @Html.TextBoxFor(m => m, new { @class = "form-control datepicker", Value = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss", formatProvider) })
+    }
+
+}

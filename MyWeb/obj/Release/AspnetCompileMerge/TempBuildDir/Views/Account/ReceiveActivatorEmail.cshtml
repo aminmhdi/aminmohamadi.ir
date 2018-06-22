@@ -1,0 +1,44 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model MyWeb.ViewModel.Account.ActivationEmailViewModel
+@{
+    Layout = null;
+}
+<div class="row">
+
+    @using (Html.BeginForm("ReceiveActivatorEmail", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "receiveActivationEmailForm" ,autocomplete="off"}))
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <strong> دریافت ایمیل فعال سازی</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.MathCaptcha("~/Views/Shared/_CaptchaPartial.cshtml")
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href='@Url.Action("ReceiveActivatorEmail","Account")' class="btn btn-success btn-block">دریافت ایمیل فعال سازی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

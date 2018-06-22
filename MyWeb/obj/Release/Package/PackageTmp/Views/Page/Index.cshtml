@@ -1,0 +1,93 @@
+﻿@using MyWeb.Utility
+@using MyWeb.ViewModel.Post
+@using PagedList
+@using PagedList.Mvc
+@model PostMainListViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.Page + " " + Model.SearchRequest.PageIndex.ToString().GetPersianNumber();
+}
+
+<header class="archive-title">
+    <h2 class="st-page-title">
+        <i class="fa fa-file-text text-darkblue"></i>
+        @Resources.PersianResources.Page: @Model.SearchRequest.PageIndex.ToString().GetPersianNumber()
+    </h2>
+</header>
+
+@if (Model.Posts.Count() != 0)
+{
+    foreach (var item in Model.Posts)
+    {
+    <article id="post-@item.Id" class="post-@item.Id post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-lifestyle tag-nice tag-story tag-travel">
+        @*<header class="entry-header">
+
+                <div class="entry-thumbnail">
+
+                </div>
+
+            </header>*@
+
+        <div class="clearfix post-content media">
+
+            <h2 class="entry-title">
+                <a href="/Post/@item.Id/@item.Title.ToUrl()" rel="bookmark">@item.Title</a>
+            </h2>
+
+            <div class="clearfix entry-meta">
+                <i class="fa fa-calendar"></i>
+                <span class="posted-on">@item.CreatedOn.ToPersianString("dddd yyyy/M/d").GetPersianNumber()</span>
+                /
+                <i class="fa fa-file-text text-darkorange"></i>
+                <span class="posted-in">
+                    <a href="/Category/@item.CategoryId" rel="category tag">@item.CategoryTitle</a>
+                </span>
+                /
+                <i class="fa fa-comment text-darkblue"></i>
+                <span>@item.CommentsCount.GetPersianNumber()</span>
+                @*/
+                    <i class="fa fa-plus-circle" style="color: green"></i>
+                    <span id="ContentPlaceHolder1_GridView1_Label_Likes_0">۳۸</span>
+                    /
+                    <i class="fa fa-minus-circle" style="color: red"></i>
+                    <span id="ContentPlaceHolder1_GridView1_Label_Unlikes_0">۰</span>*@
+
+                @*<ul class="list-inline">
+
+                        <li>
+                            <span class="author vcard">
+                                نویسنده <a class="url fn n" href="http://demo.shapedtheme.com/shaped-blog/author/shapedtheme/">@item.Creator.NameForShow</a>
+                            </span>
+                        </li>
+                        <li>
+                            در
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>*@
+            </div>
+
+            <div class="entry-summary">
+                @Html.Raw(item.Summary)
+                @*<img width="840" height="560" src="http://demo.shapedtheme.com/shaped-blog/wp-content/uploads/2015/10/kaboompics.com_Scandinavian-dining-room-compressor.jpg" class="img-responsive wp-post-image" alt="kaboompics.com_Scandinavian-dining-room-compressor">
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod <a href="http://demo.shapedtheme.com/shaped-blog/summer-home-decoration/#more-48" class="more-link"><span class="btn-readmore">Continue Reading</span></a>
+                    </p>*@
+            </div>
+
+        </div>
+
+    </article>
+    }
+
+<div class="text-center">
+    @Html.PagedListPager(new StaticPagedList<PostMainDetailViewModel>(
+  Model.Posts,
+  Model.SearchRequest.PageIndex,
+  Model.SearchRequest.PageSize,
+  Model.SearchRequest.Total),
+  pageNumber => "/Page/" + pageNumber
+)
+</div>
+}
+

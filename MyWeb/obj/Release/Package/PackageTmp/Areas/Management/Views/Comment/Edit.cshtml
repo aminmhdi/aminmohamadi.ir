@@ -1,0 +1,79 @@
+﻿@model MyWeb.ViewModel.Comment.CommentEditViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.EditComment;
+}
+
+@using (Html.BeginForm("Edit", "Comment", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+<div class="panel">
+    <div class="panel-heading clearfix">
+        <i class="fa fa-pencil append-icon"></i>
+        @Resources.PersianResources.EditComment
+        <a href="@Url.Action("Index")" class="btn btn-default btn-sm pull-left">
+            <i class='fa fa-long-arrow-left append-icon' aria-hidden='true'></i>
+            @Resources.PersianResources.BackToList
+        </a>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Ip)
+
+            @if (ViewBag.Message != null)
+            {
+            <div class="alert alert-danger">
+                @ViewBag.Message
+            </div>
+            }
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group col-xs-12 col-md-12 col-lg-12">
+                @Html.LabelFor(model => model.Body, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Body, new { @class = "form-control", rows = "10" })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-xs-12 col-md-3 col-lg-3">
+                <label class="form-group control-label">@Resources.PersianResources.Creator</label>
+                <div>@Model.Creator.NameForShow</div>
+                @*@Html.TextBoxFor(model => model.Ip, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Ip, "", new { @class = "text-danger" })*@
+            </div>
+
+            <div class="form-group col-xs-12 col-md-3 col-lg-3">
+                @Html.LabelFor(model => model.Ip, new { @class = "form-group control-label" })
+                <div>@Model.Ip</div>
+                @*@Html.TextBoxFor(model => model.Ip, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Ip, "", new { @class = "text-danger" })*@
+            </div>
+
+            <div class="form-group col-xs-12 col-md-3 col-lg-3">
+                @Html.Label(Resources.PersianResources.Post, new { @class = "form-group control-label" })
+                <div>@Model.Post.Title</div>
+            </div>
+
+            <div class="form-group col-xs-12 col-md-3 col-lg-3">
+                <div class="checkbox checkbox-custom checkbox-34">
+                    @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="form-group col-xs-12 col-md-12 col-lg-12">
+                <div class="text-left">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-floppy-o"></i>
+                        @Resources.PersianResources.Save
+                    </button>
+                    @*<input type="submit" value="@Resources.PersianResources.Save" class="btn btn-success" />*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+

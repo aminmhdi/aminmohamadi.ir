@@ -1,0 +1,25 @@
+﻿@model MyWeb.ViewModel.Category.CategoryListViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.Categories;
+}
+
+<div class="panel">
+    <header class="panel-heading clearfix">
+        @{Html.RenderPartial("_Search", Model.SearchRequest);}
+    </header>
+    <div class="panel-body" id="categoryList">
+        @{
+            Html.RenderPartial("_ListAjax", Model);
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function onComplete() {
+            //
+        }
+    </script>
+}

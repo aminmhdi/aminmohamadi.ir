@@ -1,0 +1,78 @@
+﻿@using MyWeb.Utility
+@using MyWeb.ViewModel.Post
+@using PagedList
+@using PagedList.Mvc
+@model PostMainListViewModel
+@{
+  ViewBag.Title = Resources.PersianResources.Search + ": " + Model.SearchRequest.Term + " " + Model.SearchRequest.PageIndex.ToString().GetPersianNumber();
+}
+<header class="archive-title">
+    <h2 class="st-page-title">
+        <i class="fa fa-file-text text-darkorange"></i>
+        @Resources.PersianResources.Search: '@Model.SearchRequest.Term' - @Resources.PersianResources.Page @Model.SearchRequest.PageIndex.ToString().GetPersianNumber()
+    </h2>
+</header>
+
+@if (Model.Posts.Count() != 0)
+{
+    foreach (var item in Model.Posts)
+    {
+    <article id="post-@item.Id" class="post-@item.Id post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-lifestyle tag-nice tag-story tag-travel">
+        @*<header class="entry-header">
+
+                <div class="entry-thumbnail">
+
+                </div>
+
+            </header>*@
+
+        <div class="clearfix post-content media">
+
+            <h2 class="entry-title">
+                <a href="/Post/@item.Id/@item.Title.ToUrl()" rel="bookmark">@item.Title</a>
+            </h2>
+
+            <div class="clearfix entry-meta">
+                <i class="fa fa-calendar"></i>
+                <span class="posted-on">@item.CreatedOn.ToPersianString("dddd yyyy/M/d").GetPersianNumber()</span>
+                &nbsp;
+                <i class="fa fa-file-text text-darkorange"></i>
+                <span class="posted-in">
+                    <a href="/Category/@item.Id" rel="category tag">@item.CategoryTitle</a>
+                </span>
+                &nbsp;
+                <i class="fa fa-comment text-darkblue"></i>
+                <span>@item.CommentsCount.ToString().GetPersianNumber()</span>
+            </div>
+
+            <div class="entry-summary">
+                @Html.Raw(item.Summary)
+            </div>
+
+        </div>
+
+    </article>
+    }
+
+<div class="text-center">
+    @Html.PagedListPager(new StaticPagedList<PostMainDetailViewModel>(
+            Model.Posts,
+            Model.SearchRequest.PageIndex,
+            Model.SearchRequest.PageSize,
+            Model.SearchRequest.Total),
+            pageNumber => "/Search/" + Model.SearchRequest.Term + "/" + pageNumber
+            )
+</div>
+}
+
+else
+{
+<div class="archive-title text-center">
+    <div class="form-group">
+        <i class="fa fa-5x fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+    </div>
+    <h3 class="st-page-title">
+        @Resources.PersianResources.NoData
+    </h3>
+</div>
+}

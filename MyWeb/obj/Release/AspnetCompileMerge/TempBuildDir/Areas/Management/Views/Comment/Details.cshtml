@@ -1,0 +1,95 @@
+﻿@using System.Globalization
+@using MyWeb.Utility
+@model MyWeb.ViewModel.Comment.CommentDetailViewModel
+@{
+    ViewBag.Title = Resources.PersianResources.CommentDetails;
+}
+
+<div class="panel">
+    <div class="panel-heading clearfix">
+        <i class="fa fa-file append-icon" aria-hidden="true"></i>
+        @Resources.PersianResources.CommentDetails
+        <a href="@Url.Action("Index")" class="btn btn-default btn-sm pull-left">
+            <i class="fa fa-long-arrow-left append-icon" aria-hidden="true"></i>
+            @Resources.PersianResources.BackToList
+        </a>
+    </div>
+
+    <div class="panel-body">
+        <div>
+            <h4>@Resources.PersianResources.Comment</h4>
+
+            <div class="div-striped form-group">
+                <div class="clearfix">
+                    <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                        @Html.DisplayNameFor(model => model.Body)
+                    </div><div class="col-xs-8 col-md-9 col-lg-10">
+                        @Html.DisplayFor(model => model.Body)
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                        @Html.DisplayNameFor(model => model.Ip)
+
+
+                    </div><div class="col-xs-8 col-md-9 col-lg-10">
+                        @Html.DisplayFor(model => model.Ip)
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                        @Html.DisplayNameFor(model => model.Creator)
+
+
+                    </div><div class="col-md-9 col-lg-10">
+                        @Html.DisplayFor(model => model.Creator.NameForShow) (@Model.CreatedOn.ToPersianString("yyyy/MM/dd - HH:mm"))
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                        @Html.DisplayNameFor(model => model.Post.Title)
+
+
+                    </div><div class="col-md-9 col-lg-10">
+                        @Html.DisplayFor(model => model.Post.Title) (@Model.Post.CreatedOn.ToPersianString("yyyy/MM/dd - HH:mm")))
+                    </div>
+                </div>
+
+                @{
+                    if (Model.ModifiedOn != null)
+                    {
+                        <div class="clearfix">
+                            <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                                @Html.DisplayNameFor(model => model.Modifier)
+
+
+                            </div><div class="col-md-9 col-lg-10">
+                                @Html.DisplayFor(model => model.Modifier.NameForShow) (@Model.ModifiedOn.Value.ToString("yyyy/MM/dd - HH:mm", new CultureInfo("fa-IR")))
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div class="clearfix">
+                    <div class="col-xs-4 col-md-3 col-lg-2 bold">
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </div><div class="col-md-9 col-lg-10">
+                        <div class="checkbox-custom checkbox-success checkbox-single relative inline-block">
+                            @Html.CheckBoxFor(model => model.IsActive, new { disabled = "disabled" })
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary btn-sm pull-left">
+            <i class="fa fa-pencil append-icon"></i>@Resources.PersianResources.Edit
+        </a>
+
+        @* @Html.ActionLink(Resources.PersianResources.Edit, "Edit", new { id = Model.Id }) |*@
+
+    </div>
+</div>

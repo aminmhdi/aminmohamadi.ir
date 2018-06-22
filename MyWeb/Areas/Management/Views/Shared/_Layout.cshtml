@@ -1,0 +1,154 @@
+﻿@{
+  var menuClass = "sidebar-collapse";
+  if (Request.Cookies["WebMn"] != null)
+  {
+      var value = Convert.ToBoolean(Request.Cookies["WebMn"].Value);
+      if (value)
+      {
+          menuClass = "";
+      }
+  }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/fav.ico" rel="shortcut icon">
+    <title>@ViewBag.Title - @Resources.PersianResources.Management</title>
+    <link href="/Content/Css/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/Css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="/Content/Css/bootstrap-reset.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/Css/Theme.css" rel="stylesheet" type="text/css" />
+    @RenderSection("header", required: false)
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body class="sidebar-mini @menuClass">
+
+    <!--header start-->
+    <header class="header white-bg top-header">
+        <div class="container-fluid">
+            <div class="sidebar-toggle-box pull-right">
+                <a href="#" class="fa fa-bars text-dark-blue sidebar-toggle" data-toggle="offcanvas" role="button"></a>
+            </div>
+            <!--logo start-->
+            <a href="/" class="logo">
+                <i class="append-icon middle-inline">
+                    <img src="/Content/Images/management.svg" alt="" width="30" height="30" />
+                </i>
+                <span class="middle-inline hidden-xs">
+                    @Html.ActionLink(Resources.PersianResources.Management, "Index", "Home", new { area = "Management" }, new { @class = "text-orange bold" })
+                </span>
+            </a>
+            <!--logo end-->
+            <!--user info start-->
+            @{ Html.RenderPartial("~/Areas/Management/Views/Shared/_LoginPartial.cshtml"); }
+            <!--user info end-->
+
+        </div>
+    </header>
+    <!--header end-->
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("SMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @{ Html.RenderPartial("~/Views/Shared/_LoginPartial.cshtml"); }
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+
+    <aside>
+        <div id="sidebar" class="nav-collapse main-sidebar">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>@Resources.PersianResources.Home</span>
+                    </a>
+                </li>
+                <li id="btn-home">
+                    <a href="@Url.Action("Index", "Home", new {area = "Management"})">
+                        <i class="fa fa-tachometer"></i>
+                        <span>@Resources.PersianResources.Dashboard</span>
+                    </a>
+                </li>
+                <li id="btn-post">
+                    <a href="@Url.Action("Index", "Post", new {area = "Management"})">
+                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                        <span>@Resources.PersianResources.Posts</span>
+                    </a>
+                </li>
+                <li id="btn-comment">
+                    <a href="@Url.Action("Index", "Comment", new { area = "Management" })">
+                        <i class="fa fa-comment" aria-hidden="true"></i>
+                        <span>@Resources.PersianResources.Comments</span>
+                    </a>
+                </li>
+                <li id="btn-category">
+                    <a href="@Url.Action("Index", "Category", new {area = "Management"})">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i>
+                        <span>@Resources.PersianResources.Categories</span>
+                    </a>
+                </li>
+                <li id="btn-role">
+                    <a href="@Url.Action("Index", "Role", new { area = "Management" })">
+                        <i class="fa fa-tasks" aria-hidden="true"></i>
+                        <span>@Resources.PersianResources.Role</span>
+                    </a>
+                </li>
+                <li id="btn-user">
+                    <a href="@Url.Action("Index", "User", new {area = "Management"})">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span>@Resources.PersianResources.UserManagement</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <section id="main-content">
+        <section class="wrapper">
+            @RenderBody()
+        </section>
+        <footer class="footer text-right">
+            2008 - 2017 © AminMohamadi.ir
+        </footer>
+    </section>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/Theme.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var url = window.location.href.toLowerCase().split("/");
+            $("#sidebar .sidebar-menu li").removeClass("active");
+
+            if (url.length == 4)
+                $("#btn-home").addClass("active");
+            else if (url.length == 5)
+                $("#btn-" + url[url.length - 1]).addClass("active");
+            else if (url.length == 6)
+                $("#btn-" + url[url.length - 2]).addClass("active");
+            else if (url.length == 7)
+                $("#btn-" + url[url.length - 3]).addClass("active");
+            //}
+        });
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
