@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Web", "MyWeb\MyWeb.Web.csproj", "{7658BF18-0085-4F69-902E-33E83698A5F2}"
 EndProject
@@ -18,6 +18,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Utility", "MyWeb.Utility\MyWeb.Utility.csproj", "{5A74C7AF-5524-4875-B624-8293BC4CBFFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.ViewModel", "MyWeb.ViewModel\MyWeb.ViewModel.csproj", "{FDBF5EA6-BBF8-40D8-9D99-6D1D53F44C9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F7F22727-C135-4188-8E60-E4EC7CFE3795}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,35 +68,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D27BAAC-36E8-4D36-AE18-F44C2892DDF2}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://aminmohamadi.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MyWeb.AutoMapperProfiles\\MyWeb.AutoMapperProfiles.csproj
-		SccProjectName1 = MyWeb.AutoMapperProfiles
-		SccLocalPath1 = MyWeb.AutoMapperProfiles
-		SccProjectUniqueName2 = MyWeb.DataLayer\\MyWeb.DataLayer.csproj
-		SccProjectName2 = MyWeb.DataLayer
-		SccLocalPath2 = MyWeb.DataLayer
-		SccProjectUniqueName3 = MyWeb.DomainClasses\\MyWeb.DomainClasses.csproj
-		SccProjectName3 = MyWeb.DomainClasses
-		SccLocalPath3 = MyWeb.DomainClasses
-		SccProjectUniqueName4 = MyWeb.IocConfig\\MyWeb.IocConfig.csproj
-		SccProjectName4 = MyWeb.IocConfig
-		SccLocalPath4 = MyWeb.IocConfig
-		SccProjectUniqueName5 = MyWeb.ServiceLayer\\MyWeb.ServiceLayer.csproj
-		SccProjectName5 = MyWeb.ServiceLayer
-		SccLocalPath5 = MyWeb.ServiceLayer
-		SccProjectUniqueName6 = MyWeb.Utility\\MyWeb.Utility.csproj
-		SccProjectName6 = MyWeb.Utility
-		SccLocalPath6 = MyWeb.Utility
-		SccProjectUniqueName7 = MyWeb.ViewModel\\MyWeb.ViewModel.csproj
-		SccProjectName7 = MyWeb.ViewModel
-		SccLocalPath7 = MyWeb.ViewModel
-		SccProjectUniqueName8 = MyWeb\\MyWeb.Web.csproj
-		SccProjectName8 = MyWeb
-		SccLocalPath8 = MyWeb
 	EndGlobalSection
 EndGlobal
